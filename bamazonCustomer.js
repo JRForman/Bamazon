@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var inq = require("inquirer");
+var inquirer = require("inquirer");
 var chalk = require('chalk');
 
 var connection = mysql.createConnection({
@@ -39,11 +39,11 @@ function listAllProducts(callback) {
 }
 
 function promptUser(inventory) {
-    inq.prompt([
+    inquirer.prompt([
         {
             name: "buy",
             type: "input",
-            message: "Please enter the ID of item you would like to buy. Enter (Q) to quit",
+            message: "Please enter the ID of item you would like to buy. Enter (Q) to quit:  ",
             validate: function (value) {
                 if (value === ("Q"||"q")){
                     console.log("\nLeaving Bamazon, please wait.....");

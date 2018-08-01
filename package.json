@@ -1,0 +1,25 @@
+{
+  "name": "Bamazon",
+  "version": "1.0.0",
+  "description": "This is a Node.js to MySQL demo.",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRForman/Bamazon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JRForman/Bamazon/issues"
+  },
+  "homepage": "https://github.com/JRForman/Bamazon#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "inquirer": "^6.0.0",
+    "mysql": "^2.16.0"
+  }
+}

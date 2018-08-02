@@ -39,7 +39,7 @@ function promptUser(inventory) {
             type: "input",
             message: "Please enter the ID of item you would like to buy. Enter (Q) to quit:  ",
             validate: function (value) {
-                if (value === ("Q"||"q")){
+                if (value === ("Q" || "q")) {
                     console.log("\nLeaving Bamazon, please wait.....");
                     connection.end();
                     process.exit(-1);
@@ -65,13 +65,17 @@ function promptUser(inventory) {
     ]).then(function (res) {
         console.log("Checking inventory...");
         connection.query("SELECT * FROM products where item_id = ?", res.buy, function (err, results) {
+            var totalSales = results[0].product_sales;
+            console.log(totalSales);
             if (err) throw err;
             if (results[0].stock > res.qty) {
                 console.log("Inventory in stock, completing purchase");
                 var newInStock = parseInt(results[0].stock) - parseInt(res.qty);
-                var totalCost = results[0].price * res.qty;
-                console.log("\nYour total cost will be $" + chalk.red(totalCost.toFixed(2)));
-                connection.query("UPDATE products SET stock = ? where item_id = ?", [newInStock, res.buy], function (err, results) {
+                var totalCost = parseFloat((results[0].price * res.qty).toFixed(2));
+                totalSales+=totalCost
+                console.log(totalSales);
+                console.log("\nYour total cost will be $" + chalk.red(totalCost));
+                connection.query("UPDATE products SET stock = ?, product_sales = ? where item_id = ?", [newInStock, totalSales, res.buy], function (err, results) {
                     if (err) throw err;
                     listAllProducts(promptUser);
                 });

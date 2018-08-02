@@ -60,7 +60,6 @@ function viewSalesByDepartment() {
         group by department_name
         order by departments.department_ID;`, function (err, results) {
             if (err) throw err;
-            console.log(results);
             for (x in results) {
                 var total_profit = parseFloat(results[x].total_sales) - parseFloat(results[x].over_head_costs)
                 var newDepartment = { Department_ID: results[x].department_ID, Department_Name: results[x].department_name, Over_Head_Costs: results[x].over_head_costs, Total_Sales: results[x].total_sales, Total_Profit: total_profit }

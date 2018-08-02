@@ -9,3 +9,7 @@ This is a Node.js to MySQL demo.
 #bamazonManagerDemo
 
 ![managerDemo](/assets/demo_bamazonManager.gif)
+
+#bamazonSupervisorDemo
+
+![supervisorDemo](/assets/demo_bamazonSupervisor.gif)
